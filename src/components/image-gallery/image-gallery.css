@@ -25,9 +25,7 @@
         -webkit-column-count: 2;
         -moz-column-count: 2;
         column-count: 2;
-
     }
-
 }
 
 @media(max-width: 320px) {
@@ -39,7 +37,6 @@
         -moz-column-width: 100%;
         column-width: 100%;
     }
-
 }
 
 .model {

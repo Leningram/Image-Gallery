@@ -1,12 +1,32 @@
-import React from "react";
+import React, { Component } from "react";
 
-const AddForm = () => {
-    return (
-        <form>
-            <input type="text"></input>
-            <button>Добавить</button>
-        </form>
-    );
-};
+export default class AddForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            text: ""
+        };
+        this.onValueChange = this.onValueChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+    }
 
-export default AddForm;
+    onValueChange(e) {
+        this.setState({
+            text: e.target.value
+        });
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
+        this.props.onAdd(this.state.text);
+    }
+
+    render() {
+        return (
+            <form onSubmit={this.onSubmit}>
+                <input type="text" placeholder="Введите URL изображения" onChange={this.onValueChange}></input>
+                <button type="submit">Добавить</button>
+            </form>
+        );
+    }
+}
