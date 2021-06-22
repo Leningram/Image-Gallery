@@ -19,12 +19,21 @@ export default class AddForm extends Component {
     onSubmit(e) {
         e.preventDefault();
         this.props.onAdd(this.state.text);
+        //Очищаем текстовое поле
+        this.setState({
+            text: ""
+        });
     }
 
     render() {
         return (
             <form onSubmit={this.onSubmit}>
-                <input type="text" placeholder="Введите URL изображения" onChange={this.onValueChange}></input>
+                <input
+                    type="text"
+                    placeholder="Введите URL изображения"
+                    value={this.state.text}
+                    onChange={this.onValueChange}
+                ></input>
                 <button type="submit">Добавить</button>
             </form>
         );
