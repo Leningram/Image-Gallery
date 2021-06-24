@@ -13,7 +13,7 @@ export default class ImageGallery extends Component {
     }
 
     render() {
-        const { data } = this.props; //деструктурируем пропсы для сокращенной записи
+        const { data, onDelete } = this.props; //деструктурируем пропсы для сокращенной записи
         const showImage = (imgSrc) => {
             this.setState({ tempImgSrc: imgSrc });
             this.setState({ modal: true });
@@ -25,11 +25,11 @@ export default class ImageGallery extends Component {
                     <img
                         src={img.url}
                         key={index}
-                        alt="gallery"
+                        alt="gallery-item"
                         style={{ width: "100%" }}
                         onClick={() => showImage(img.url)}
                     ></img>
-                    <DeleteIcon onClick={() => this.props.onDelete(index)} />
+                    <DeleteIcon onClick={() => onDelete(index)} />
                 </div>
             );
         });

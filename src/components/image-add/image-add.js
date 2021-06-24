@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./image-add.css";
 
 export default class AddForm extends Component {
     constructor(props) {
@@ -34,7 +35,7 @@ export default class AddForm extends Component {
                     value={this.state.text}
                     onChange={this.onValueChange}
                 ></input>
-                <button type="submit">Добавить</button>
+                <button type="submit">Загрузить</button>
             </form>
         );
     }
