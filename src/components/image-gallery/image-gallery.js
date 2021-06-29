@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./image-gallery.css";
+import ImageItem from "../image-item/image-item";
 import Close from "@material-ui/icons/Close";
-import DeleteIcon from "@material-ui/icons/Delete";
 
 export default class ImageGallery extends Component {
     constructor(props) {
@@ -50,18 +50,7 @@ export default class ImageGallery extends Component {
         };
 
         const images = data.map((img, index) => {
-            return (
-                <div className="pics" key={index}>
-                    <img
-                        src={img.url}
-                        key={index}
-                        alt="gallery-item"
-                        style={{ width: "100%" }}
-                        onClick={() => showImage(img.url)}
-                    ></img>
-                    <DeleteIcon onClick={() => onDelete(index)} />
-                </div>
-            );
+            return <ImageItem img={img} index={index} onDelete={onDelete} showImage={showImage} />;
         });
         return (
             <>
