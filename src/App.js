@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./App.css";
 import ImageGallery from "./components/image-gallery/image-gallery";
 import AddForm from "./components/image-add/image-add";
 
@@ -49,11 +50,11 @@ export default class App extends Component {
 
     render() {
         return (
-            <>
+            <div className="main-wrapper">
                 <h1 style={{ textAlign: "center" }}>Image Gallery</h1>
                 <AddForm onAdd={this.addImage} />
                 <ImageGallery onAdd={this.addImage} data={this.state.data} onDelete={this.deleteImage} />
-            </>
+            </div>
         );
     }
 }

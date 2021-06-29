@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./image-item.css";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 export default class ImageItem extends Component {
@@ -12,18 +13,20 @@ export default class ImageItem extends Component {
     componentDidMount() {
         setTimeout(() => {
             this.setState({ loading: false });
-        }, 2000);
+        }, 2000); //задержка 2с для показа лоадера
     }
 
     render() {
-        const { index, img, onDelete, showImage } = this.props;
+        const { index, img, onDelete, showImage } = this.props; //деструктурируем пропсы для сокращенной записи
         const content = this.state.loading ? (
-            <div>Loading...</div>
+            <div className="loader-container">
+                <div className="loader-wheel"></div>
+            </div>
         ) : (
-            <div className="pics" key={index}>
+            <div className="pics" index={index}>
                 <img
                     src={img.url}
-                    key={index}
+                    index={index}
                     alt="gallery-item"
                     style={{ width: "100%" }}
                     onClick={() => showImage(img.url)}
@@ -32,7 +35,7 @@ export default class ImageItem extends Component {
             </div>
         );
         return (
-            <div className="pics" key={index}>
+            <div className="pics" index={index}>
                 {content}
             </div>
         );

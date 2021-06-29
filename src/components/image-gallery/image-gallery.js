@@ -50,10 +50,10 @@ export default class ImageGallery extends Component {
         };
 
         const images = data.map((img, index) => {
-            return <ImageItem img={img} index={index} onDelete={onDelete} showImage={showImage} />;
+            return <ImageItem img={img} key={index} index={index} onDelete={onDelete} showImage={showImage} />;
         });
         return (
-            <>
+            <div className="gallery-wrapper">
                 {this.state.drag ? (
                     <div
                         className="drop-area"
@@ -71,7 +71,7 @@ export default class ImageGallery extends Component {
                             <Close onClick={() => this.setState({ modal: false })} />
                         </div>
                         <div
-                            className="gallery"
+                            className="gallery-container"
                             onDragStart={(e) => this.dragStartHandler(e)}
                             onDragLeave={(e) => this.dragLeaveHandler(e)}
                             onDragOver={(e) => this.dragStartHandler(e)}
@@ -80,7 +80,7 @@ export default class ImageGallery extends Component {
                         </div>
                     </div>
                 )}
-            </>
+            </div>
         );
     }
 }
