@@ -7,9 +7,9 @@ export default class ImageGallery extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            modal: false,
+            modal: false, // показ модального окна для просмотра изображения
             tempImgSrc: "",
-            drag: false
+            drag: false // показ поля для переноса файлов
         };
         this.dragStartHandler = this.dragStartHandler.bind(this);
         this.dragLeaveHandler = this.dragLeaveHandler.bind(this);
@@ -28,10 +28,15 @@ export default class ImageGallery extends Component {
 
     onDropHandler(e) {
         e.preventDefault();
-        const files = [...e.dataTransfer.files];
-        const imageTypes = ["image/gif", "image/jpeg", "image/jpg", "image/pjpeg", "image/x-png", "image/png"];
+        const files = [...e.dataTransfer.files]; //Получаем массив перенесенных файлов
+        const imageTypes = ["image/gif", "image/jpeg", "image/jpg", "image/pjpeg", "image/x-png", "image/png"]; //массив для проверки типа файла
         files.forEach((file) => {
             if (imageTypes.indexOf(file.type) !== -1) {
+                let reader = new FileReader();
+                reader.onloadend = () => {
+                    this.props.onAdd(reader.result); // передаем изображение в кодировке Base64
+                };
+                reader.readAsDataURL(file);
             }
         });
         this.setState({ drag: false });

@@ -23,11 +23,6 @@ export default class App extends Component {
     }
     //
     addImage(url) {
-        if (!url) {
-            alert("Введите URL");
-            return;
-        }
-
         const newImage = {
             url,
             id: this.maxId++
@@ -57,7 +52,7 @@ export default class App extends Component {
             <>
                 <h1 style={{ textAlign: "center" }}>Image Gallery</h1>
                 <AddForm onAdd={this.addImage} />
-                <ImageGallery data={this.state.data} onDelete={this.deleteImage} />
+                <ImageGallery onAdd={this.addImage} data={this.state.data} onDelete={this.deleteImage} />
             </>
         );
     }
