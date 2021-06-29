@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./image-add.css";
+import { Button, TextField } from "@material-ui/core";
 
 export default class AddForm extends Component {
     constructor(props) {
@@ -29,13 +30,16 @@ export default class AddForm extends Component {
     render() {
         return (
             <form onSubmit={this.onSubmit}>
-                <input
+                <TextField
+                    fullWidth
                     type="text"
-                    placeholder="Введите URL изображения"
+                    label="Введите URL изображения"
                     value={this.state.text}
                     onChange={this.onValueChange}
-                ></input>
-                <button type="submit">Загрузить</button>
+                ></TextField>
+                <Button variant="contained" color="primary" type="submit">
+                    Загрузить
+                </Button>
             </form>
         );
     }

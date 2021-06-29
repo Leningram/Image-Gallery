@@ -4,38 +4,8 @@
 
 form {
     display: flex;
+    gap: 20px;
+    width: 40rem;
     justify-content: center;
-    align-items: center;
-    margin: 0 0 30px 30px;
-}
-
-input {
-    padding: 10px;
-    width: 20rem;
-    height: 2rem;
-    margin-right: 10px;
-
-    font-size: 1rem;
-    font-weight: 400;
-    color: #444752;
-
-    background: linear-gradient(167.06deg, #FFFFFF -168.32%, #C3CADB 104.54%);
-    border-radius: 4px;
-
-}
-
-button {
-    display: flex;
-    align-items: center;
-    height: 2rem;
-    padding: 1rem;
-    background: #365ABB;
-    color: white;
-    border-radius: 9px;
-}
-
-button:hover {
-    background: #5777cf;
-    cursor: pointer;
-
+    margin: 30px auto;
 }
