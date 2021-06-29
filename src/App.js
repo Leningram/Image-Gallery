@@ -30,8 +30,6 @@ export default class App extends Component {
 
         const newImage = {
             url,
-            width: 640,
-            height: 425,
             id: this.maxId++
         };
         this.setState(({ data }) => {
