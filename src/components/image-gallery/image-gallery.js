@@ -8,8 +8,33 @@ export default class ImageGallery extends Component {
         super(props);
         this.state = {
             modal: false,
-            tempImgSrc: ""
+            tempImgSrc: "",
+            drag: false
         };
+        this.dragStartHandler = this.dragStartHandler.bind(this);
+        this.dragLeaveHandler = this.dragLeaveHandler.bind(this);
+        this.onDropHandler = this.onDropHandler.bind(this);
+    }
+
+    dragStartHandler(e) {
+        e.preventDefault();
+        this.setState({ drag: true });
+    }
+
+    dragLeaveHandler(e) {
+        e.preventDefault();
+        this.setState({ drag: false });
+    }
+
+    onDropHandler(e) {
+        e.preventDefault();
+        const files = [...e.dataTransfer.files];
+        const imageTypes = ["image/gif", "image/jpeg", "image/jpg", "image/pjpeg", "image/x-png", "image/png"];
+        files.forEach((file) => {
+            if (imageTypes.indexOf(file.type) !== -1) {
+            }
+        });
+        this.setState({ drag: false });
     }
 
     render() {
@@ -35,11 +60,32 @@ export default class ImageGallery extends Component {
         });
         return (
             <>
-                <div className={this.state.modal ? "modal open" : "modal"}>
-                    <img src={this.state.tempImgSrc} alt="Opened" />
-                    <Close onClick={() => this.setState({ modal: false })} />
-                </div>
-                <div className="gallery">{images}</div>
+                {this.state.drag ? (
+                    <div
+                        className="drop-area"
+                        onDragStart={(e) => this.dragStartHandler(e)}
+                        onDragLeave={(e) => this.dragLeaveHandler(e)}
+                        onDragOver={(e) => this.dragStartHandler(e)}
+                        onDrop={(e) => this.onDropHandler(e)}
+                    >
+                        Отпустите файлы, чтобы загрузить их
+                    </div>
+                ) : (
+                    <div>
+                        <div className={this.state.modal ? "modal open" : "modal"}>
+                            <img src={this.state.tempImgSrc} alt="Opened" />
+                            <Close onClick={() => this.setState({ modal: false })} />
+                        </div>
+                        <div
+                            className="gallery"
+                            onDragStart={(e) => this.dragStartHandler(e)}
+                            onDragLeave={(e) => this.dragLeaveHandler(e)}
+                            onDragOver={(e) => this.dragStartHandler(e)}
+                        >
+                            {images}
+                        </div>
+                    </div>
+                )}
             </>
         );
     }

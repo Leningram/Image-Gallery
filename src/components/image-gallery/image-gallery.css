@@ -1,44 +1,47 @@
 .gallery {
-    -webkit-column-count: 3;
-    -moz-column-count: 3;
-    column-count: auto;
-    column-width: 32rem;
-    -webkit-column-width: 33%;
-    -moz-column-width: 33%;
-    column-width: 33%;
-    pad: 0 12px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 40px;
+    justify-content: stretch;
 }
 
 .gallery .pics {
+    display: flex;
+    flex: 1 1 300px;
+    min-width: 20vw;
+    max-width: 40vw;
+    height: 30vh;
     -webkit-transition: all 350ms ease;
     transition: all 350ms ease;
     cursor: pointer;
-    margin-bottom: 12px;
     position: relative;
 }
 
+.gallery .pics img {
+    object-fit: cover;
+}
 
 .gallery .pics:hover {
     filter: opacity(.8);
 }
 
-@media(max-width: 860px) {
-    .gallery {
-        -webkit-column-count: 2;
-        -moz-column-count: 2;
-        column-count: 2;
-    }
-}
-
-@media(max-width: 320px) {
-    .gallery {
-        -webkit-column-count: 1;
-        -moz-column-count: 1;
-        column-count: 1;
-        -webkit-column-width: 100%;
-        -moz-column-width: 100%;
-        column-width: 100%;
-    }
+.drop-area {
+    left: 50%;
+    transform: translate(-50%, 0);
+    position: absolute;
+    margin: 40px;
+    width: 90vw;
+    height: 100vh;
+    border: 5px dashed rgb(80, 80, 80);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    color: white;
+    font-size: 32px;
+    background: rgba(0, 0, 0, 0.6);
 }
 
 .modal {
@@ -78,11 +81,13 @@
 }
 
 .modal.open svg {
+    width: 1rem;
+    height: 1rem;
     position: fixed;
     top: 10px;
     right: 10px;
-    width: 2rem;
-    height: 2rem;
+    width: 4rem;
+    height: 4rem;
     padding: 5px;
     background-color: rgba(0, 0, 0, 0);
     color: #fff;
@@ -93,8 +98,8 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    width: 2rem;
-    height: 2rem;
+    width: 3rem;
+    height: 3rem;
     padding: 5px;
     background-color: rgba(0, 0, 0, 0);
     color: rgb(24, 24, 24);
@@ -105,4 +110,32 @@
 
 .pics:hover svg {
     opacity: 1;
+}
+
+@media(max-width: 860px) {
+    .gallery .pics {
+        display: flex;
+        flex: 1 1 50px;
+        min-width: 20vw;
+        max-width: 40vw;
+        height: 25vh;
+        -webkit-transition: all 350ms ease;
+        transition: all 350ms ease;
+        cursor: pointer;
+        position: relative;
+    }
+}
+
+@media(max-width: 320px) {
+    .gallery .pics {
+        display: flex;
+        flex: 1 1 300px;
+        min-width: 80vw;
+        max-width: 80vw;
+        height: 20vh;
+        -webkit-transition: all 350ms ease;
+        transition: all 350ms ease;
+        cursor: pointer;
+        position: relative;
+    }
 }
