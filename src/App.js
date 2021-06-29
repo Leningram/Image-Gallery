@@ -23,10 +23,12 @@ export default class App extends Component {
     }
     //
     addImage(url) {
+        //создаем объект с новым изображением
         const newImage = {
             url,
             id: this.maxId++
         };
+        //и добавляем его к остальным
         this.setState(({ data }) => {
             const newArray = [...data, newImage];
             return {
@@ -37,10 +39,8 @@ export default class App extends Component {
 
     deleteImage(id) {
         this.setState(({ data }) => {
-            const before = data.slice(0, id);
-            const after = data.slice(id + 1);
-            const newArr = [...before, ...after];
-
+            // удаляем изображение из массива по его индексу
+            const newArr = [...data.slice(0, id), ...data.slice(id + 1)];
             return {
                 data: newArr
             };
