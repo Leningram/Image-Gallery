@@ -11,9 +11,7 @@ export default class ImageItem extends Component {
     }
 
     componentDidMount() {
-        setTimeout(() => {
-            this.setState({ loading: false });
-        }, 2000); //задержка 2с для показа лоадера
+        this.setState({ loading: false });
     }
 
     render() {
@@ -23,7 +21,7 @@ export default class ImageItem extends Component {
                 <div className="loader-wheel"></div>
             </div>
         ) : (
-            <div className="pics" index={index}>
+            <div>
                 <img
                     src={img.url}
                     index={index}
@@ -34,10 +32,6 @@ export default class ImageItem extends Component {
                 <DeleteIcon onClick={() => onDelete(index)} />
             </div>
         );
-        return (
-            <div className="pics" index={index}>
-                {content}
-            </div>
-        );
+        return <div className="pics">{content}</div>;
     }
 }

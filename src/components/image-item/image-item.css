@@ -1,3 +1,21 @@
+.pics {
+    display: flex;
+}
+
+.pics div {
+    position: relative;
+    cursor: pointer;
+    object-fit: contain;
+    flex-grow: 1;
+}
+
+.pics div img {
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
 .loader-container {
     display: flex;
     justify-content: center;
