@@ -1,19 +1,21 @@
 .gallery-container {
     display: grid;
     gap: 10px;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
+    grid-template-columns: repeat(4, 1fr);
     width: 100%;
 
 }
 
 @media (min-width: 321px) and (max-width: 576px) {
     .gallery-container {
-        display: grid;
-        gap: 10px;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: auto;
-        width: 100%;
+    }
+}
+
+@media (min-width: 10px) and (max-width: 320px) {
+    .gallery-container {
+        grid-template-columns: repeat(2, 1fr);
+        width: 320px;
     }
 }
 
