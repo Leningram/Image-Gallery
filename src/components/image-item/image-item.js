@@ -11,15 +11,46 @@ export default class ImageItem extends Component {
     }
 
     componentDidMount() {
-        this.setState({ loading: false });
+        setTimeout(() => {
+            this.setState({ loading: false });
+        }, 2000);
     }
 
     render() {
         const { index, img, onDelete, showImage } = this.props; //деструктурируем пропсы для сокращенной записи
         console.log(this.state.loading);
+        // const content = (
+        //     <div className="loadingio-spinner-spinner-jkqy4i1hzgg">
+        //         <div className="ldio-ercbuk0p6kn">
+        //             <div></div>
+        //             <div></div>
+        //             <div></div>
+        //             <div></div>
+        //             <div></div>
+        //             <div></div>
+        //             <div></div>
+        //             <div></div>
+        //             <div></div>
+        //             <div></div>
+        //             <div></div>
+        //             <div></div>
+        //         </div>
+        //     </div>
+        // );
         const content = this.state.loading ? (
-            <div className="loadingio-spinner-rolling-sfoaij7v4zk">
-                <div className="ldio-nqybr7h0e6">
+            <div className="loadingio-spinner-spinner-jkqy4i1hzgg">
+                <div className="ldio-ercbuk0p6kn">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                     <div></div>
                 </div>
             </div>
